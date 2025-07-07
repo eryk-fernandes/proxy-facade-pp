@@ -15,8 +15,23 @@ package org.example.exercicioProxy1;
 public class Main {
 
     public static void main(String[] args) {
-        LivroDigital livro = new LivroDigital("Padrões de projeto", "Conteúdo completo do livro...");
+        LivroProxy livro = new LivroProxy("Padrões de projeto", "Conteúdo completo do livro...", new AcessoPremium());
 
         livro.ler();
+
+        System.out.println();
+
+        LivroProxy livro1 = new LivroProxy("POO", "Conteúdo completo do livro...", new AcessoComum());
+
+        livro1.ler();
+
+
+        /*
+        Na hora de implementar a autenticação, notei que facilmente poderia infrigir o
+        aberto e fechado
+        Pra isso, criei uma interface Acesso e classes pra todo tipo de acesso
+        Dessa forma o programa está aberto para novos tipos de acesso e fechado para modificação
+        Sem a necessidade de usar uma estrutura de if e else
+         */
     }
 }

@@ -11,7 +11,7 @@ package org.example.exercicioProxy2;
 public class Main {
 
     public static void main(String[] args) {
-        ServicoSms sms = new ServicoSms();
+        ServicoSmsProxy sms = new ServicoSmsProxy();
         sms.envia("99999-9090", "Código de verificação: 123456");
         sms.envia("99999-9090", "Código de verificação: 567890");
     }
