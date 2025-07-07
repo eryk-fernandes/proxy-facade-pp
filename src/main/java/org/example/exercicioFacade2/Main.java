@@ -23,40 +23,10 @@ public class Main {
         EmailService emailService = new EmailService();
         LogService logService = new LogService();
 
-        if(validadorDados.validar(usuario1) != false){
-            if(service.cpfExiste(usuario1.getCpf()) == false){
-                service.salvar(usuario1);
-                emailService.enviarBoasVindas(usuario1.getEmail());
-                logService.registrar("Usuário cadastrado: "+ usuario1.getNome());
-            }else{
-                logService.registrar("CPF já cadastrado.");
-            }
-        }else{
-            logService.registrar("Dados inválidos.");
-        }
+        CadastroFacade cadastro = new CadastroFacade(validadorDados, emailService, logService, service);
 
-        if(validadorDados.validar(usuario2) != false){
-            if(service.cpfExiste(usuario2.getCpf()) == false){
-                service.salvar(usuario2);
-                emailService.enviarBoasVindas(usuario2.getEmail());
-                logService.registrar("Usuário cadastrado: "+ usuario2.getNome());
-            }else{
-                logService.registrar("CPF já cadastrado.");
-            }
-        }else{
-            logService.registrar("Dados inválidos.");
-        }
+        cadastro.cadastrarUsuario(usuario1);
+        cadastro.cadastrarUsuario(usuario2);
 
-        if(validadorDados.validar(usuario2) != false){
-            if(service.cpfExiste(usuario2.getCpf()) == false){
-                service.salvar(usuario2);
-                emailService.enviarBoasVindas(usuario2.getEmail());
-                logService.registrar("Usuário cadastrado: "+ usuario2.getNome());
-            }else{
-                logService.registrar("CPF já cadastrado.");
-            }
-        }else{
-            logService.registrar("Dados inválidos.");
-        }
     }
 }

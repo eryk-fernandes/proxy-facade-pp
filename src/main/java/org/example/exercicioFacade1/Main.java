@@ -12,15 +12,14 @@ public class Main {
 
     public static void main(String[] args) {
 
-        CarregadorDeArquivo carredor = new CarregadorDeArquivo();
+        CarregadorDeArquivo carregador = new CarregadorDeArquivo();
         DecodificadorDeVideo video = new DecodificadorDeVideo();
         DecodificadorDeAudio audio = new DecodificadorDeAudio();
         Reprodutor reprodutor = new Reprodutor();
 
-        carredor.carregar("video.mp4");
-        video.decodificar();
-        audio.decodificar();
-        reprodutor.reproduzir();
+        ReprodutorVideoFacade reprodutorFacade = new ReprodutorVideoFacade(carregador, video, audio, reprodutor);
+
+        reprodutorFacade.reproduzirVideo("video.mp4");
 
     }
 }
